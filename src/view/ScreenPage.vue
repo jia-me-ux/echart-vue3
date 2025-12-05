@@ -25,6 +25,7 @@
                 'iconfont',
                 fullScreenStatus.trend ? 'icon-compress-alt' : 'icon-expand-alt',
               ]"
+              :style="comStyle"
             ></span>
           </div>
         </div>
@@ -38,6 +39,7 @@
                 'iconfont',
                 fullScreenStatus.seller ? 'icon-compress-alt' : 'icon-expand-alt',
               ]"
+              :style="comStyle"
             ></span>
           </div>
         </div>
@@ -50,6 +52,7 @@
             <span
               @click="changeSize('map')"
               :class="['iconfont', fullScreenStatus.map ? 'icon-compress-alt' : 'icon-expand-alt']"
+              :style="comStyle"
             ></span>
           </div>
         </div>
@@ -60,6 +63,7 @@
             <span
               @click="changeSize('rank')"
               :class="['iconfont', fullScreenStatus.rank ? 'icon-compress-alt' : 'icon-expand-alt']"
+              :style="comStyle"
             ></span>
           </div>
         </div>
@@ -72,6 +76,7 @@
             <span
               @click="changeSize('hot')"
               :class="['iconfont', fullScreenStatus.hot ? 'icon-compress-alt' : 'icon-expand-alt']"
+              :style="comStyle"
             ></span>
           </div>
         </div>
@@ -85,6 +90,7 @@
                 'iconfont',
                 fullScreenStatus.stock ? 'icon-compress-alt' : 'icon-expand-alt',
               ]"
+              :style="comStyle"
             ></span>
           </div>
         </div>
@@ -100,8 +106,10 @@ import Rank from '@/components/Rank.vue'
 import Seller from '@/components/Seller.vue'
 import Stock from '@/components/Stock.vue'
 import Trend from '@/components/Trend.vue'
-import { nextTick, ref } from 'vue'
+import { nextTick, ref, computed } from 'vue'
 import { useThemeStore } from '@/store/useThemeStore'
+import { storeToRefs } from 'pinia'
+const { styleTheme } = storeToRefs(useThemeStore())
 
 const { changeStyleTheme } = useThemeStore()
 
@@ -119,6 +127,12 @@ const fullScreenStatus = ref({
   rank: false,
   hot: false,
   stock: false,
+})
+
+const comStyle = computed(() => {
+  return {
+    color: styleTheme.value === 'chalk' ? '#fff' : '#000',
+  }
 })
 
 async function changeSize(chartName) {

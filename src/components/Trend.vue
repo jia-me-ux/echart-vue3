@@ -7,7 +7,7 @@
       >
       <div class="select-con" v-show="showChoice">
         <div
-          class="select-item"
+          class="select-item spantitle"
           v-for="item in selectTypes"
           :key="item.key"
           :style="marginStyle"
@@ -49,6 +49,7 @@ const showTitle = computed(() => {
 const comStyle = computed(() => {
   return {
     fontSize: titleFontSize.value + 'px',
+    color: styleTheme.value === 'chalk' ? '#fff' : '#000',
   }
 })
 
@@ -211,7 +212,6 @@ watch(styleTheme, () => {
   top: 20px;
   left: 20px;
   z-index: 10;
-  color: white;
   .title-icon {
     margin-left: 10px;
     cursor: pointer;

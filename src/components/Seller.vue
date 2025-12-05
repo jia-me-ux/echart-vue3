@@ -41,7 +41,6 @@ const initChart = () => {
       left: '20',
       top: '20',
       textStyle: {
-        color: '#fff',
         fontSize: 56,
       },
     },
