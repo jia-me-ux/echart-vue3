@@ -23,4 +23,12 @@ export default defineConfig([
   js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
   skipFormatting,
+  {
+    files: ['**/*.vue'],
+    rules: {
+      'vue/multi-word-component-names': 'off'
+    }
+  }
 ])
+
+// 添加这个配置对象来禁用多单词组件名规则
